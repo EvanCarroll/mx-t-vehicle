@@ -1,4 +1,5 @@
 blib*
+/MANIFEST
 *\.SKIP
 *\.bak
 /META.yml
