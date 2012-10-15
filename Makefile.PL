@@ -9,6 +9,9 @@ requires 'Moose'                => '2.06';
 requires 'MooseX::Types'        => '0.35';
 requires 'MooseX::Types::Moose' => '0.35';
 
+homepage 'https://github.com/EvanCarroll/mx-t-vehicle';
+repository 'git://github.com/EvanCarroll/mx-t-vehicle.git';
+
 build_requires 'Test::More';
 
 auto_install;

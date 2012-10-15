@@ -1,4 +1,8 @@
 blib*
+/META.yml
+/MYMETA.json
+/MYMETA.yml
+/inc/
 Makefile
 Makefile.old
 Build
