@@ -1,0 +1,17 @@
+use inc::Module::Install;
+
+name     'MooseX-Types-Vehicle';
+all_from 'lib/MooseX/Types/Vehicle.pm';
+author   q{Evan Carroll <me@evancarroll.com>};
+license  'perl';
+
+requires 'Moose'                => '2.06';
+requires 'MooseX::Types'        => '0.35';
+requires 'MooseX::Types::Moose' => '0.35';
+
+build_requires 'Test::More';
+
+auto_install;
+
+WriteAll;
+
