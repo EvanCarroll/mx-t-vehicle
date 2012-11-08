@@ -1,11 +1,12 @@
 package MooseX::Types::Vehicle;
+use 5.008;
 use strict;
 use warnings;
 
 use MooseX::Types -declare => [qw/VIN17/];
 use MooseX::Types::Moose qw/Str/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 subtype VIN17 , as Str
 	, where {
@@ -60,7 +61,7 @@ coerce VIN17
 	, from Str , via {
 		my $vin = shift;
 		$vin =~ tr/qQoOiI/000011/;
-  	$vin =~ s/\s+//g;
+		$vin =~ s/\s+//g;
 		return uc($vin);
 	}
 ;
@@ -75,27 +76,27 @@ MooseX::Types::Vehicle - Moose Types for Vehicles (NHSTA 17 char VIN)
 
 This module provide the type B<VIN17>. This type can be used in Moose code.
 
-    use MooseX::Types::Vehicle qw/VIN17/;
+use MooseX::Types::Vehicle qw/VIN17/;
 
-    has 'vin' => ( isa => VIN17, is => 'rw' );
+has 'vin' => ( isa => VIN17, is => 'rw' );
 
 
 Alternatively, you can have it automagically coerce to a VIN if possible:
 
-    use MooseX::Types::Vehicle qw/VIN17/;
-    
-    has 'vin' => ( isa => VIN17, is => 'rw', coerce => 1 );
+use MooseX::Types::Vehicle qw/VIN17/;
+
+has 'vin' => ( isa => VIN17, is => 'rw', coerce => 1 );
 
 Lastly, all L<MooseX::Types> modules can export a function for is_TYPE and to_TYPE.
 
-    use MooseX::Types::Vehicle qw/to_VIN17 is_VIN17/;
-    
-    ## Return a VIN number without spaces, with the 'O' (letter) as '0' (number zero)
-    ## 'I' (letter) as '1' (number one) and without spaces.
-    to_VIN17( '3D7KS28C26G 18OO4I  ' );
+use MooseX::Types::Vehicle qw/to_VIN17 is_VIN17/;
 
-    ## Returns 1 or 0 if the VIN is valid.
-    is_VIN17( '3D7KS28C26G180041' );
+## Return a VIN number without spaces, with the 'O' (letter) as '0' (number zero)
+## 'I' (letter) as '1' (number one) and without spaces.
+to_VIN17( '3D7KS28C26G 18OO4I  ' );
+
+## Returns 1 or 0 if the VIN is valid.
+is_VIN17( '3D7KS28C26G180041' );
 
 =head1 DESCRIPTION
 
@@ -109,7 +110,7 @@ are uppercased in coercion.
 
 A B<VIN check> is a checksum against the VIN.
 
-For more information see the L</"SEE ALSO">. 
+For more information see the L</"SEE ALSO">.
 
 =head1 EXPORT
 
